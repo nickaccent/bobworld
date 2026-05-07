@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, useContext, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerformanceMonitor, OrbitControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { useControls } from 'leva';
 import EntityRenderer from './EntityRenderer';
@@ -74,7 +74,6 @@ const Environment = () => {
       }}
     >
       <Suspense fallback={null}>
-        <PerformanceMonitor>
           <Camera position={[0, 6, 13]} fov={40} />
           <Lights entityManager={entityManager} />
           <OrbitControls
@@ -98,7 +97,6 @@ const Environment = () => {
           <Ground />
           <EntityRenderer />
           <Clock entityManager={entityManager} />
-        </PerformanceMonitor>
         {Perf && <Perf position="top-left" showGraph={false} />}
       </Suspense>
     </Canvas>

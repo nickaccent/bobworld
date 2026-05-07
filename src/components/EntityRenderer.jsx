@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Suspense } from 'react';
 import { useStore } from '../hooks/useStore';
 import { useFrame } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
 import { EntityManagerContext } from '../contexts/EntityManager';
 import Markers from './Markers';
 import Roads from './Roads';
@@ -11,6 +12,24 @@ import ResidentialBuildings from './ResidentialBuildings';
 import People from './People';
 
 const EMPTY = Object.freeze([]);
+
+// Pre-warm every model the entity layer can mount, so the first instance of
+// any type does not suspend and blank the parent <Suspense>.
+[
+  '/Models/newModels/Roads/deadEnd.glb',
+  '/Models/newModels/Roads/straight.glb',
+  '/Models/newModels/Roads/curve.glb',
+  '/Models/newModels/Roads/threeway.glb',
+  '/Models/newModels/Roads/fourway.glb',
+  '/Models/newModels/Buildings/Residential/house_small1.glb',
+  '/Models/newModels/Buildings/Commercial/shop1.glb',
+  '/Models/newModels/Buildings/Industrial/factory1.glb',
+  '/Models/newModels/People/bob.glb',
+  '/Models/newModels/People/bobsimple.glb',
+  '/Models/newModels/Vehicles/car.glb',
+  '/Models/newModels/Vehicles/truck.glb',
+  '/Models/newModels/Vehicles/hatchback.glb',
+].forEach((p) => useGLTF.preload(p));
 
 const EntityRenderer = () => {
   const [debug] = useStore((state) => [state.debug]);
@@ -60,14 +79,28 @@ const EntityRenderer = () => {
     entityManager.requiresUpdate = false;
   });
 
+  // Each typed bucket lives in its own <Suspense> so a late-loading model only
+  // blanks its own subtree, never the entire 3D scene.
   return (
     <>
-      <Roads roads={buckets.roads} />
-      <TemporaryRoads temporaryRoads={buckets.temporaryRoads} />
-      {buckets.industrial.length > 0 && <IndustrialBuildings buildings={buckets.industrial} />}
-      {buckets.commercial.length > 0 && <CommercialBuildings buildings={buckets.commercial} />}
-      {buckets.residential.length > 0 && <ResidentialBuildings buildings={buckets.residential} />}
-      {buckets.people.length > 0 && <People people={buckets.people} />}
+      <Suspense fallback={null}>
+        <Roads roads={buckets.roads} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <TemporaryRoads temporaryRoads={buckets.temporaryRoads} />
+      </Suspense>
+      <Suspense fallback={null}>
+        {buckets.industrial.length > 0 && <IndustrialBuildings buildings={buckets.industrial} />}
+      </Suspense>
+      <Suspense fallback={null}>
+        {buckets.commercial.length > 0 && <CommercialBuildings buildings={buckets.commercial} />}
+      </Suspense>
+      <Suspense fallback={null}>
+        {buckets.residential.length > 0 && <ResidentialBuildings buildings={buckets.residential} />}
+      </Suspense>
+      <Suspense fallback={null}>
+        {buckets.people.length > 0 && <People people={buckets.people} />}
+      </Suspense>
       {debug && <Markers entityManager={entityManager} />}
     </>
   );
