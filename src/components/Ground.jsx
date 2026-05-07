@@ -45,6 +45,7 @@ const Ground = () => {
 
   groundMat.wrapS = RepeatWrapping;
   groundMat.wrapT = RepeatWrapping;
+  groundMat.colorSpace = THREE.SRGBColorSpace;
 
   useEffect(() => {
     if (clockH === 0 && clockM === 0) {

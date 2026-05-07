@@ -37,6 +37,13 @@ const Building = ({ entity, temporary }) => {
       if (child.isMesh) {
         child.castShadow = true;
         child.receiveShadow = true;
+        // FBXLoader loads color textures as linear; flag them as sRGB so they
+        // tone-map correctly under ACES/sRGB output.
+        const mats = Array.isArray(child.material) ? child.material : [child.material];
+        for (const mat of mats) {
+          if (mat?.map) mat.map.colorSpace = THREE.SRGBColorSpace;
+          if (mat?.emissiveMap) mat.emissiveMap.colorSpace = THREE.SRGBColorSpace;
+        }
       }
     });
     return cloned;

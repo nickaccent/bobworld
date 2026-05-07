@@ -10,7 +10,7 @@ function FactoryBuildings({ factoryBuildings }) {
       {factoryBuildings.length > 0 ? (
         <>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1.geometry}
             material={materials.RedFactory1}
           >
@@ -21,7 +21,7 @@ function FactoryBuildings({ factoryBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1_1.geometry}
             material={materials.GreyFactory1}
           >
@@ -32,7 +32,7 @@ function FactoryBuildings({ factoryBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1_2.geometry}
             material={materials.WindowsFactory1}
           >
@@ -43,7 +43,7 @@ function FactoryBuildings({ factoryBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1_3.geometry}
             material={materials.PipesFactory1}
           >
@@ -54,7 +54,7 @@ function FactoryBuildings({ factoryBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1_4.geometry}
             material={materials.AirconFactory1}
           >
@@ -65,7 +65,7 @@ function FactoryBuildings({ factoryBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={factoryBuildings.length}
+            limit={256} range={factoryBuildings.length}
             geometry={nodes.factory1_5.geometry}
             material={materials.DoorFactory1}
           >

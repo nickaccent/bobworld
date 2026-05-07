@@ -68,7 +68,7 @@ const Environment = () => {
       onCreated={({ gl }) => {
         if (gl.isWebGLRenderer) {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1.0;
+          gl.toneMappingExposure = 0.85;
           gl.outputColorSpace = THREE.SRGBColorSpace;
         }
       }}

@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { ClockContext } from '../contexts/Clock';
 
+// Game runs 24 game-hours per 300 real-seconds, so 1 game-hour = 12.5s.
+// Start the in-game clock at noon (12:00) for a sensible opening view.
+const NOON_OFFSET_SECONDS = 12 * 12.5;
+
 const Clock = ({ entityManager }) => {
   const { setClockH, clockH, setClockM, clockM, setDelta } = useContext(ClockContext);
+  const initialised = useRef(false);
   useFrame((state, delta) => {
     if (entityManager.elapsedTimeLoad === true) {
       state.clock.elapsedTime = entityManager.elapsedTime;
       entityManager.elapsedTimeLoad = false;
+      initialised.current = true;
+    } else if (!initialised.current) {
+      state.clock.elapsedTime += NOON_OFFSET_SECONDS;
+      initialised.current = true;
     }
     let daySeconds = entityManager.days * 300;
     let currentDayTime = state.clock.elapsedTime - daySeconds;

@@ -145,7 +145,7 @@ function PeopleInstances({ peopleEntities }) {
       {peopleEntities.length > 0 ? (
         <>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob.geometry}
             material={materials.Hair}
           >
@@ -156,7 +156,7 @@ function PeopleInstances({ peopleEntities }) {
             </group>
           </Instances>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob_1.geometry}
             material={materials.Skin}
           >
@@ -167,7 +167,7 @@ function PeopleInstances({ peopleEntities }) {
             </group>
           </Instances>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob_2.geometry}
             material={materials.Black}
           >
@@ -178,7 +178,7 @@ function PeopleInstances({ peopleEntities }) {
             </group>
           </Instances>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob_3.geometry}
             material={materials.DarkRed}
           >
@@ -189,7 +189,7 @@ function PeopleInstances({ peopleEntities }) {
             </group>
           </Instances>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob_4.geometry}
             material={materials.Red}
           >
@@ -200,7 +200,7 @@ function PeopleInstances({ peopleEntities }) {
             </group>
           </Instances>
           <Instances
-            range={peopleEntities.length}
+            limit={256} range={peopleEntities.length}
             geometry={nodes.Bob_5.geometry}
             material={materials.Blue}
           >

@@ -9,7 +9,7 @@ function EndRoads({ endRoads }) {
       {endRoads.length > 0 ? (
         <>
           <Instances
-            range={endRoads.length}
+            limit={256} range={endRoads.length}
             geometry={nodes.street.geometry}
             material={materials.Grey}
           >
@@ -20,7 +20,7 @@ function EndRoads({ endRoads }) {
             </group>
           </Instances>
           <Instances
-            range={endRoads.length}
+            limit={256} range={endRoads.length}
             geometry={nodes.street_1.geometry}
             material={materials.Black}
           >
@@ -31,7 +31,7 @@ function EndRoads({ endRoads }) {
             </group>
           </Instances>
           <Instances
-            range={endRoads.length}
+            limit={256} range={endRoads.length}
             geometry={nodes.street_2.geometry}
             material={materials.White}
           >
@@ -56,7 +56,7 @@ function StraightRoads({ straightRoads }) {
       {straightRoads.length > 0 ? (
         <>
           <Instances
-            range={straightRoads.length}
+            limit={256} range={straightRoads.length}
             geometry={nodes.street_straight.geometry}
             material={materials.Grey1}
           >
@@ -67,7 +67,7 @@ function StraightRoads({ straightRoads }) {
             </group>
           </Instances>
           <Instances
-            range={straightRoads.length}
+            limit={256} range={straightRoads.length}
             geometry={nodes.street_straight_1.geometry}
             material={materials.Black1}
           >
@@ -78,7 +78,7 @@ function StraightRoads({ straightRoads }) {
             </group>
           </Instances>
           <Instances
-            range={straightRoads.length}
+            limit={256} range={straightRoads.length}
             geometry={nodes.street_straight_2.geometry}
             material={materials.White1}
           >
@@ -103,7 +103,7 @@ function CurveRoads({ curveRoads }) {
       {curveRoads.length > 0 ? (
         <>
           <Instances
-            range={curveRoads.length}
+            limit={256} range={curveRoads.length}
             geometry={nodes.street_curve.geometry}
             material={materials.Grey2}
           >
@@ -114,7 +114,7 @@ function CurveRoads({ curveRoads }) {
             </group>
           </Instances>
           <Instances
-            range={curveRoads.length}
+            limit={256} range={curveRoads.length}
             geometry={nodes.street_curve_1.geometry}
             material={materials.Black2}
           >
@@ -125,7 +125,7 @@ function CurveRoads({ curveRoads }) {
             </group>
           </Instances>
           <Instances
-            range={curveRoads.length}
+            limit={256} range={curveRoads.length}
             geometry={nodes.street_curve_2.geometry}
             material={materials.White2}
           >
@@ -150,7 +150,7 @@ function ThreeWayRoads({ threeWayRoads }) {
       {threeWayRoads.length > 0 ? (
         <>
           <Instances
-            range={threeWayRoads.length}
+            limit={256} range={threeWayRoads.length}
             geometry={nodes.street_three.geometry}
             material={materials.Grey3}
           >
@@ -161,7 +161,7 @@ function ThreeWayRoads({ threeWayRoads }) {
             </group>
           </Instances>
           <Instances
-            range={threeWayRoads.length}
+            limit={256} range={threeWayRoads.length}
             geometry={nodes.street_three_1.geometry}
             material={materials.Black3}
           >
@@ -172,7 +172,7 @@ function ThreeWayRoads({ threeWayRoads }) {
             </group>
           </Instances>
           <Instances
-            range={threeWayRoads.length}
+            limit={256} range={threeWayRoads.length}
             geometry={nodes.street_three_2.geometry}
             material={materials.White3}
           >
@@ -197,7 +197,7 @@ function FourWayRoads({ fourWayRoads }) {
       {fourWayRoads.length > 0 ? (
         <>
           <Instances
-            range={fourWayRoads.length}
+            limit={256} range={fourWayRoads.length}
             geometry={nodes.street_four.geometry}
             material={materials.Grey4}
           >
@@ -208,7 +208,7 @@ function FourWayRoads({ fourWayRoads }) {
             </group>
           </Instances>
           <Instances
-            range={fourWayRoads.length}
+            limit={256} range={fourWayRoads.length}
             geometry={nodes.street_four_1.geometry}
             material={materials.Black4}
           >
@@ -219,7 +219,7 @@ function FourWayRoads({ fourWayRoads }) {
             </group>
           </Instances>
           <Instances
-            range={fourWayRoads.length}
+            limit={256} range={fourWayRoads.length}
             geometry={nodes.street_four_2.geometry}
             material={materials.White4}
           >

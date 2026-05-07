@@ -10,7 +10,7 @@ function Shop1Buildings({ shopBuildings }) {
       {shopBuildings.length > 0 ? (
         <>
           <Instances
-            range={shopBuildings.length}
+            limit={256} range={shopBuildings.length}
             geometry={nodes.Shop.geometry}
             material={materials.shop1}
           >

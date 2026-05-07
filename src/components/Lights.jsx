@@ -32,10 +32,12 @@ const Lights = ({ entityManager }) => {
     setSunPos([x, Math.max(y, 0.05), SUN_Z]);
 
     const above = Math.max(0, sunHeight);
-    const dirInt = above * 3.0;
-    const ambInt = 0.25 + above * 1.0;
+    // Noon (above=1) preserved at dirInt 2.3, ambInt 0.8 — looks good.
+    // Night floor (above=0) raised so the scene reads at midnight.
+    const dirInt = 0.9 + above * 1.4;
+    const ambInt = 0.6 + above * 0.2;
     const warmth = 1 - above;
-    _color.copy(COLOR_DAY).lerp(COLOR_DUSK, warmth * 0.7);
+    _color.copy(COLOR_DAY).lerp(COLOR_DUSK, warmth * 0.5);
 
     if (dirRef.current) {
       dirRef.current.intensity = dirInt;
@@ -65,7 +67,7 @@ const Lights = ({ entityManager }) => {
         shadow-mapSize={2048}
         shadow-bias={-0.0008}
       >
-        <orthographicCamera attach="shadow-camera" args={[-10.5, 10.5, 10.5, -10.5, 0.0, 30]} />
+        <orthographicCamera attach="shadow-camera" args={[-18, 18, 18, -18, 0.1, 60]} />
       </directionalLight>
       <ambientLight ref={ambRef} intensity={1.2} />
     </>

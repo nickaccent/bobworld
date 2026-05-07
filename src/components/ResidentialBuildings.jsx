@@ -10,7 +10,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
       {houseBuildings.length > 0 ? (
         <>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small.geometry}
             material={materials.RedFactory1}
           >
@@ -21,7 +21,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_1.geometry}
             material={materials.GreyFactory1}
           >
@@ -32,7 +32,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_2.geometry}
             material={materials.WindowsFactory1}
           >
@@ -43,7 +43,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_3.geometry}
             material={materials.PipesFactory1}
           >
@@ -54,7 +54,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_4.geometry}
             material={materials.DoorFactory1}
           >
@@ -65,7 +65,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_5.geometry}
             material={materials.Trunk}
           >
@@ -76,7 +76,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_6.geometry}
             material={materials.Leaves}
           >
@@ -87,7 +87,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_7.geometry}
             material={materials.Walls}
           >
@@ -98,7 +98,7 @@ function SmallHouse1Buildings({ houseBuildings }) {
             </group>
           </Instances>
           <Instances
-            range={houseBuildings.length}
+            limit={256} range={houseBuildings.length}
             geometry={nodes.house_small_8.geometry}
             material={materials.Grass}
           >

@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useEffect, useRef, useContext } from 'react';
 import HashGrid from '../classes/HashGrid';
 import SoundManager from '../classes/SoundManager';
-import * as PF from 'pathfinding';
 
 import GUI from './GUI';
 import StartGUI from './StartGUI';
@@ -23,18 +22,21 @@ const Game = () => {
   const { setSoundManager } = useContext(SoundManagerContext);
 
   useEffect(() => {
-    if (loading === true) {
+    if (loading !== true) return;
+    let cancelled = false;
+    (async () => {
+      const PF = await import('pathfinding');
+      if (cancelled) return;
       const width = 11;
       const depth = 11;
-      let soundManager = new SoundManager();
+      const soundManager = new SoundManager();
       setSoundManager(soundManager);
       const dimensions = [depth, width];
-      let gridCellArray = [];
+      const gridCellArray = [];
       for (let x = 0; x < width; x++) {
         for (let y = 0; y < depth; y++) {
-          let k = `${x}.${y}`;
           gridCellArray.push({
-            key: k,
+            key: `${x}.${y}`,
             x,
             y,
             type: 'EMPTY',
@@ -54,8 +56,7 @@ const Game = () => {
       entityManager.soundManager = soundManager;
       setHashGrid(hashGrid);
 
-      // set vehicle path grid
-      let vPfGrid = new PF.Grid(width, depth);
+      const vPfGrid = new PF.Grid(width, depth);
       for (let y = 0; y < depth; y++) {
         for (let x = 0; x < width; x++) {
           vPfGrid.setWalkableAt(x, y, false);
@@ -63,11 +64,13 @@ const Game = () => {
       }
       entityManager.roadsGrid = vPfGrid;
 
-      // set grid for general object placement
-      let pfGrid = new PF.Grid(width, depth);
+      const pfGrid = new PF.Grid(width, depth);
       setPathFindingGrid(pfGrid);
       entityManager.initialized = true;
-    }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
