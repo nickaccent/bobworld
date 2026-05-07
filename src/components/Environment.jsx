@@ -1,14 +1,17 @@
-import { Suspense, useEffect, useRef, useContext } from 'react';
+import { Suspense, useEffect, useRef, useContext, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerformanceMonitor, OrbitControls, Sky } from '@react-three/drei';
+import { PerformanceMonitor, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { useControls } from 'leva';
-import { Perf } from 'r3f-perf';
 import EntityRenderer from './EntityRenderer';
 import Clock from './Clock';
 import Camera from './Camera';
 import Lights from './Lights';
 import Ground from './Ground';
+
+const Perf = import.meta.env.DEV
+  ? lazy(() => import('r3f-perf').then((m) => ({ default: m.Perf })))
+  : null;
 
 import { useStore } from '../hooks/useStore';
 import { EntityManagerContext } from '../contexts/EntityManager';
@@ -72,7 +75,6 @@ const Environment = () => {
     >
       <Suspense fallback={null}>
         <PerformanceMonitor>
-          <Sky distance={450} sunPosition={[8, 20, 18]} turbidity={6} rayleigh={1} mieCoefficient={0.005} mieDirectionalG={0.8} />
           <Camera position={[0, 6, 13]} fov={40} />
           <Lights entityManager={entityManager} />
           <OrbitControls
@@ -97,7 +99,7 @@ const Environment = () => {
           <EntityRenderer />
           <Clock entityManager={entityManager} />
         </PerformanceMonitor>
-        <Perf position="top-left" showGraph={false} />
+        {Perf && <Perf position="top-left" showGraph={false} />}
       </Suspense>
     </Canvas>
   );

@@ -1,12 +1,14 @@
-import React, { Suspense, useEffect, useRef, useContext } from 'react';
+import React, { Suspense, lazy, useEffect, useRef, useContext } from 'react';
 import HashGrid from '../classes/HashGrid';
 import SoundManager from '../classes/SoundManager';
 import * as PF from 'pathfinding';
 
 import GUI from './GUI';
-import Environment from './Environment';
 import StartGUI from './StartGUI';
 import LoadGUI from './LoadGUI';
+import ErrorBoundary from './ErrorBoundary';
+
+const Environment = lazy(() => import('./Environment'));
 import { GUIContext } from '../contexts/GUI';
 import { EntityManagerContext } from '../contexts/EntityManager';
 import { HashGridContext } from '../contexts/HashGrid';
@@ -78,10 +80,12 @@ const Game = () => {
   return (
     <>
       {start === true ? (
-        <>
-          <Environment />
-          <GUI />
-        </>
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <Environment />
+            <GUI />
+          </Suspense>
+        </ErrorBoundary>
       ) : load === true ? (
         <LoadGUI />
       ) : (
