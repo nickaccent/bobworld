@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 
 const Lights = ({ entityManager }) => {
   const lightRef = useRef();
-  let dIntensity = 1.0;
-  let aIntensity = 0.5;
+  let dIntensity = 3.0;
+  let aIntensity = 1.2;
 
   // if (entityManager.clockH >= 0 && entityManager.clockH < 6) {
   //   dIntensity = 0.15;

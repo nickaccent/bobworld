@@ -57,7 +57,7 @@ class Vehicle extends Entity {
       this.moving = true;
       this.parent.requiresUpdate = true;
     }
-    this.rotationY = Math.Pi * 2;
+    this.rotationY = Math.PI * 2;
   }
 
   GetVehicleModel() {

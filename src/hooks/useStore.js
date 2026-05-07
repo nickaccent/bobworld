@@ -1,7 +1,8 @@
-import { create } from 'zustand';
+import { createWithEqualityFn } from 'zustand/traditional';
+import { shallow } from 'zustand/shallow';
 import * as THREE from 'three';
 
-export const useStore = create((set) => ({
+export const useStore = createWithEqualityFn((set) => ({
   start: false,
   setStart: (start) => {
     set(() => ({
@@ -191,4 +192,4 @@ export const useStore = create((set) => ({
       blueprintPosition,
     }));
   },
-}));
+}), shallow);
