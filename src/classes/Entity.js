@@ -1,9 +1,8 @@
 import * as THREE from 'three';
-import uuid from 'react-uuid';
 
 class Entity {
   constructor(params) {
-    this.id = uuid();
+    this.id = crypto.randomUUID();
     this.parent = params.parent;
     this.type = params.type;
     this.w = params.w;

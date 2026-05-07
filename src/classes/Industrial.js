@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import uuid from 'react-uuid';
 import Entity from './Entity';
 import Vehicle from './Vehicle';
 

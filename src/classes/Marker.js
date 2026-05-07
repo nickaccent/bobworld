@@ -1,9 +1,8 @@
 import * as THREE from 'three';
-import uuid from 'react-uuid';
 
 class Marker {
   constructor(positionArray, open, upMarker, lane) {
-    this.id = uuid();
+    this.id = crypto.randomUUID();
     this.positionArray = positionArray;
     this.position = new THREE.Vector3(positionArray[0], positionArray[1], positionArray[2]);
     this.open = open;

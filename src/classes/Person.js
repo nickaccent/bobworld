@@ -2,13 +2,12 @@ import * as THREE from 'three';
 import * as PF from 'pathfinding';
 import Entity from './Entity';
 import AdjacencyGraph from './AdjacencyGraph.js';
-import uuid from 'react-uuid';
 import { firstNames, lastNames } from '../utils/names.js';
 
 class Person extends Entity {
   constructor(params) {
     super(params);
-    this.id = uuid();
+    this.id = crypto.randomUUID();
     this.rotation = new THREE.Quaternion();
     this.direction = new THREE.Matrix4();
     this.scale = [0.006, 0.006, 0.006];

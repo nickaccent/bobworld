@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, useContext } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerformanceMonitor, OrbitControls } from '@react-three/drei';
+import { PerformanceMonitor, OrbitControls, Sky } from '@react-three/drei';
 import * as THREE from 'three';
 import { useControls } from 'leva';
 import { Perf } from 'r3f-perf';
@@ -9,7 +9,6 @@ import Clock from './Clock';
 import Camera from './Camera';
 import Lights from './Lights';
 import Ground from './Ground';
-import SkyBox from './SkyBox';
 
 import { useStore } from '../hooks/useStore';
 import { EntityManagerContext } from '../contexts/EntityManager';
@@ -63,17 +62,17 @@ const Environment = () => {
     <Canvas
       shadows="soft"
       gl={createRenderer}
-      onCreated={({ gl, scene }) => {
+      onCreated={({ gl }) => {
         if (gl.isWebGLRenderer) {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
           gl.toneMappingExposure = 1.0;
           gl.outputColorSpace = THREE.SRGBColorSpace;
         }
-        scene.background = new THREE.Color('#87CEEB');
       }}
     >
       <Suspense fallback={null}>
         <PerformanceMonitor>
+          <Sky distance={450} sunPosition={[8, 20, 18]} turbidity={6} rayleigh={1} mieCoefficient={0.005} mieDirectionalG={0.8} />
           <Camera position={[0, 6, 13]} fov={40} />
           <Lights entityManager={entityManager} />
           <OrbitControls
